@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Task;
+use App\Post;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function tasks() {
-        return $this->hasMany(Task::class);
+    public function posts() {
+        return $this->hasMany(Post::class);
     }
 }

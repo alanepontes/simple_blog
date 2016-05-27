@@ -4,17 +4,17 @@ namespace App\Repositories;
 
 use App\User;
 
-class TaskRepository
+class PostRepository
 {
     /**
-     * Get all of the tasks for a given user.
+     * Get all of the posts for a given user.
      *
      * @param  User  $user
      * @return Collection
      */
     public function forUser(User $user)
     {
-        return $user->tasks()
+        return $user->posts()
                     ->orderBy('created_at', 'asc')
                     ->get();
     }

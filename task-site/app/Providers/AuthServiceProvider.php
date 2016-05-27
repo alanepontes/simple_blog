@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Task;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -15,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        'Ápp\Task' => 'App\Policies\TaskPolicy'
+        'Ápp\Post' => 'App\Policies\PostPolicy'
     ];
 
     /**
