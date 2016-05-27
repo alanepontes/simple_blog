@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Log;
 use App\Http\Requests;
 use App\Repositories\PostRepository;
 use App\Post;
@@ -35,6 +36,7 @@ class PostController extends Controller
     }
 
     public function destroy(Request $request, Post $post) {
+        Log::info("Em posts controller:" . $post);
         $this->authorize('destroy', $post);
         $post->delete();
 
