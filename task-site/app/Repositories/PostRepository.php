@@ -16,6 +16,7 @@ class PostRepository
     {
         return $user->posts()
                     ->orderBy('created_at', 'asc')
-                    ->get();
+                    ->simplePaginate(2);
+                    //->get();
     }
 }

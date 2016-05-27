@@ -15,8 +15,6 @@ class PostController extends Controller
     {
         $this->middleware('auth');
         $this->posts = $posts;
-
-
     }
 
     public function index(Request $request)
@@ -29,7 +27,10 @@ class PostController extends Controller
     public function store(Request $request) {
         $this->validate($request, ['content' => 'required|max:255']);
 
-        $request->user()->posts()->create(['content' => $request->content]);
+        $request->user()->posts()->create(
+            ['title' => $request->title],
+            ['content' => $request->content]
+        );
 
         return redirect('/posts');
 

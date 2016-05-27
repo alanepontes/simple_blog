@@ -16,8 +16,12 @@
 
             <!-- Post Content -->
             <div class="form-group">
-                <label for="post-content" class="col-sm-3 control-label">Post</label>
+                <label for="post-title" class="col-sm-3 control-label">Title</label>
+                <div class="col-sm-6">
+                    <input type="text" name="title" id="post-title" class="form-control">
+                </div>
 
+                <label for="post-content" class="col-sm-3 control-label">Content</label>
                 <div class="col-sm-6">
                     <input type="text" name="content" id="post-content" class="form-control">
                 </div>
@@ -58,9 +62,7 @@
                                     <tr>
                                         <!-- Post Name -->
                                         <td class="table-text">
-                                            <div>{{ $post->content }}</div>
-                                            <div>{{ $post->user_id }}</div>
-                                            <div>{{ $user->id }}</div>
+                                            <div>{{ $post->title }}</div>
 
                                         </td>
 
@@ -70,7 +72,7 @@
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="DELETE">
 
-                                                <button type="submit" id="delete-post-{{ $post->id }}" class="btn btn-danger">
+                                                <button type="submit" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i> Delete
                                                 </button>
                                             </form>
@@ -79,6 +81,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        {!! $posts->links() !!}
                     </tbody>
                 </table>
             </div>
