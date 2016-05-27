@@ -24,15 +24,27 @@ class PostController extends Controller
             )->with('user', $request->user());
     }
 
+    public function create() {
+        return view('posts.create');
+    }
+
     public function store(Request $request) {
         $this->validate($request, ['content' => 'required|max:255']);
 
+        Log::info("Em posts store title:" . $request->title);
+        Log::info("Em posts store content:" . $request->content);
+
         $request->user()->posts()->create(
-            ['title' => $request->title],
-            ['content' => $request->content]
+            ['title' => $request->title, 'content' => $request->content]
         );
 
         return redirect('/posts');
+
+    }
+
+    public function show(Request $request, Post $post) {
+
+        return view('posts.show', ['post' => $post])->with('user', $request->user());
 
     }
 

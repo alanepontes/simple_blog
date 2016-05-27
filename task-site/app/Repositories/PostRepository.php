@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\User;
+use App\Post;
 
 class PostRepository
 {
@@ -17,6 +18,10 @@ class PostRepository
         return $user->posts()
                     ->orderBy('created_at', 'asc')
                     ->simplePaginate(2);
-                    //->get();
+    }
+
+    public function allPosts() {
+        return Post::all();
+        //->orderBy('created_at', 'asc')->simplePaginate(2);
     }
 }

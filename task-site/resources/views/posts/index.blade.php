@@ -66,8 +66,13 @@
 
                                         </td>
 
-                                        <!-- Delete Button -->
                                         <td>
+                                            <button type="button" onclick="window.location='{{url("post/".$post->id)}}'" class="btn btn-success">
+                                                    <i class="fa fa-file-text "></i> View
+                                            </button>
+                                        </td>
+                                        <td>
+
                                             <form action="{{ url('post/'.$post->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="DELETE">
@@ -77,13 +82,14 @@
                                                 </button>
                                             </form>
                                         </td>
+
                                     </tr>
                                 </td>
                             </tr>
                         @endforeach
-                        {!! $posts->links() !!}
                     </tbody>
                 </table>
+                {!! $posts->links() !!}
             </div>
         </div>
     @endif

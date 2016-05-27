@@ -40,14 +40,19 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    <img src="http://static.gocase.com.br/skin/frontend/gocase/default/images/logo.png" alt="Logo Gocase - Capas para Celular e Acessórios">
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}">About me</a></li>
+                    @if(Auth::user())
+                        <li><a href="{{ url('/home') }}">Add Post</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -59,7 +64,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->firstName }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

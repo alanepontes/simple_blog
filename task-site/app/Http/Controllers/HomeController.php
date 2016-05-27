@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Repositories\PostRepository;
 
 class HomeController extends Controller
 {
@@ -12,9 +13,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PostRepository $posts)
     {
-        $this->middleware('auth');
+        $this->posts = $posts;
     }
 
     /**
@@ -22,8 +23,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        return view('home',['posts' => $this->posts->allPosts()])->with('user', $request->user());
     }
 }

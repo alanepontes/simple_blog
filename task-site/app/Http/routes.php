@@ -16,10 +16,13 @@ postsIt's a breeze. Simply tell Laravel the URIs it should respond to
 
 Route::get('/', 'PostController@index');
 Route::get('/posts', 'PostController@index');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/post/{post}', 'PostController@show');
 Route::post('/post', 'PostController@store');
+Route::get('/create', 'PostController@create');
 Route::delete('/post/{post}', 'PostController@destroy');
 
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/seed-data', 'SeedController@createSeed');
 
 Route::auth();
 
