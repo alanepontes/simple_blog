@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Repositories\PostRepository;
 
@@ -25,6 +27,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home',['posts' => $this->posts->allPosts()])->with('user', $request->user());
+        return view('home',['posts' => Post::all()])->with('users', User::all());
     }
 }

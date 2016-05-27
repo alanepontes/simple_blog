@@ -25,7 +25,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'content' => $faker->realText($maxNbChars = 400, $indexSize = 2),
-        'title' => $faker->title,
+        'title' =>$faker->realText($faker->numberBetween(40,50)),
         'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
     ];
 });

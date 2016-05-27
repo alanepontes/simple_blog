@@ -8,12 +8,14 @@ use Log;
 use App\Http\Requests;
 use App\Repositories\PostRepository;
 use App\Post;
+use App\User;
+use Auth;
 
 class PostController extends Controller
 {
     public function __construct(PostRepository $posts)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['show']]);
         $this->posts = $posts;
     }
 
@@ -43,8 +45,7 @@ class PostController extends Controller
     }
 
     public function show(Request $request, Post $post) {
-
-        return view('posts.show', ['post' => $post])->with('user', $request->user());
+        return view('posts.show', ['post' => $post])->with('user', User::find($post->user_id));
 
     }
 
