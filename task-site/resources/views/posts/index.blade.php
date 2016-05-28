@@ -14,13 +14,16 @@
         <form action="{{ url('post') }}" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
-            <!-- Post Content -->
+            <!-- Post Title -->
             <div class="form-group">
                 <label for="post-title" class="col-sm-3 control-label">Title</label>
                 <div class="col-sm-6">
                     <input type="text" name="title" id="post-title" class="form-control">
                 </div>
+            </div>
 
+             <!-- Post Content -->
+            <div class="form-group">
                 <label for="post-content" class="col-sm-3 control-label">Content</label>
                 <div class="col-sm-6">
                     <input type="text" name="content" id="post-content" class="form-control">
@@ -42,48 +45,36 @@
     @if (count($posts) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-                Current Posts
+                Your Posts
             </div>
 
             <div class="panel-body">
                 <table class="table table-striped post-table">
-
-                    <!-- Table Headings -->
-                    <thead>
-                        <th>Post</th>
-                        <th>&nbsp;</th>
-                    </thead>
-
                     <!-- Table Body -->
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
+                                <!-- Post Name -->
+                                <td class="table-text">
+                                    <div>{{ $post->title }}</div>
+
+                                </td>
+
                                 <td>
-                                    <tr>
-                                        <!-- Post Name -->
-                                        <td class="table-text">
-                                            <div>{{ $post->title }}</div>
+                                    <button type="button" onclick="window.location='{{url("post/".$post->id)}}'" class="btn btn-success">
+                                            <i class="fa fa-file-text "></i> View
+                                    </button>
+                                </td>
+                                <td>
 
-                                        </td>
+                                    <form action="{{ url('post/'.$post->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                                        <td>
-                                            <button type="button" onclick="window.location='{{url("post/".$post->id)}}'" class="btn btn-success">
-                                                    <i class="fa fa-file-text "></i> View
-                                            </button>
-                                        </td>
-                                        <td>
-
-                                            <form action="{{ url('post/'.$post->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="DELETE">
-
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-
-                                    </tr>
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -93,4 +84,14 @@
             </div>
         </div>
     @endif
+<hr>
+<footer>
+        <div class="container ">
+            <div class="row">
+                <p class="copyright text-muted">Copyright &copy; GoCase 2016</p>
+            </div>
+        </div>
+</footer>
+
 @endsection
+

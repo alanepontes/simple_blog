@@ -17,11 +17,10 @@ class PostRepository
     {
         return $user->posts()
                     ->orderBy('created_at', 'asc')
-                    ->simplePaginate(2);
+                    ->simplePaginate(10);
     }
 
     public function allPosts() {
-        return Post::all();
-        //->orderBy('created_at', 'asc')->simplePaginate(2);
+        return Post::orderBy('created_at', 'asc')->simplePaginate(10);
     }
 }

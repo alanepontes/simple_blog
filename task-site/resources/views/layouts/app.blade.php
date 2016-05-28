@@ -51,7 +51,7 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/home') }}">About me</a></li>
                     @if(Auth::user())
-                        <li><a href="{{ url('/home') }}">Add Post</a></li>
+                        <li><a href="{{ url('/posts') }}">Add Post</a></li>
                     @endif
                 </ul>
 

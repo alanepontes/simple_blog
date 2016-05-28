@@ -27,6 +27,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home',['posts' => Post::all()])->with('users', User::all());
+        return view('home',['posts' => $this->posts->allPosts()])->with('users', User::all());
     }
 }

@@ -14,7 +14,9 @@ postsIt's a breeze. Simply tell Laravel the URIs it should respond to
 |
 */
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+
 Route::get('/posts', 'PostController@index');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/post/{post}', 'PostController@show');
@@ -26,7 +28,7 @@ Route::get('/seed-data', 'SeedController@createSeed');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+
 
 
 
