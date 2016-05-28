@@ -17,9 +17,12 @@ class PostsTableSeeder extends Seeder
 
         DB::table('posts')->delete();
 
-        factory(App\Post::class, 3)->create([
+        foreach (range(1, 100) as $i) {
+            factory(App\Post::class)->create([
             'user_id' => User::find(rand(1, 5))->id,
         ]);
+        }
+
 
 
     }
